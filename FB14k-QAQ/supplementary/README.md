@@ -20,8 +20,20 @@ If you then look into the `data/valid_subj.txt` file, and search for the query e
 [4745]  /m/04cr6qv ...ommitted for readability...  /people/person/gender	/m/05zppz
 [12393] 	/location/statistical_region/gdp_nominal./measurement_unit/dated_money_value/currency	/m/04cr6qv
 ```
-For 952 query it can be derived from line[4] of the supplementary file, that it has lost at least one answer during entity removal process.
+For 952 query it can be derived from line[4] of the supplementary file, that it has lost at least one answer during entity removal process and belongs to *I* (indicated by 0 in the grouping file).
+
 For query 4745 the entity of interest is in the answer position. To find out the type for this query, we would have to look for a line starting with `/m/05zppz,/people/person/gender` in the  `grouping_answers_subj.csv` file.
-For query 123393 there is no relevant record in the grouping file, meaning the query is a fake one.
+
+For query 123393 there is no relevant record in the grouping file, meaning the query is a fake one from set *F*.
+
 
 We did not find queries ocurring in lines[1,2,3] in the validation file. Since the query grouping files are shared between all evaluation queries, they come from the test split and can be found there.
+
+E.g. from `test_subj.txt`
+```
+[5360] /m/05bt6j	/music/genre/artists	/m/04cr6qv
+```
+line[2] ends with 1, therefore this test subject query belongs to set *C*.
+
+
+The object queries can be check on with the `grouping_answers_obj.csv` file analogously by searching for (query subject entity, query relation, 0/1).
